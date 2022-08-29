@@ -1,0 +1,7 @@
+version: "3"
+
+services:
+  sharath.co.in:
+    build: .
+    ports:
+      - "8080:80"

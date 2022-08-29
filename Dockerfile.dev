@@ -1,0 +1,8 @@
+FROM node:16.15.1-alpine
+RUN apk add --no-cache tini
+ENTRYPOINT ["/sbin/tini", "--"]
+
+ENV NODE_ENV=development
+RUN corepack enable
+WORKDIR /app
+CMD ["/bin/sh", "-c", "yarn install && yarn dev --host"]

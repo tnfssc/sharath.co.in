@@ -1,0 +1,9 @@
+node_modules
+docker*.yml
+Dockerfile*
+yarn.lock
+*.log
+README.md
+.gitignore
+.dockerignore
+.npmrc
