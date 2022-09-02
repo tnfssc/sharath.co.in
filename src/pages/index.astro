@@ -3,10 +3,14 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Home">
-  <h class="text-6xl">Hi</h>
+  <span id="home-content"><h1 class="text-6xl">Hi</h1></span>
 </Layout>
 <script>
   if (`${window.location.href}` !== `${window.location.origin}/`) {
-    window.location.href = `${window.location.origin}/404`;
+    document.getElementById("home-content")!.innerHTML = `
+      <h1 class="text-6xl">You seem lost</h1>
+      <div class="h-5"></div>
+      <a class="hover:underline" href="/menu">visit the menu?</a>
+    `;
   }
 </script>
