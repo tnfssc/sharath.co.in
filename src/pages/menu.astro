@@ -1,0 +1,50 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import CardGrid from "../components/CardGrid.astro";
+
+const menuItems = [
+  {
+    content: "Home",
+    href: "/",
+    background: "bg-gradient-to-tl from-red-500 to-yellow-500",
+    width: 4,
+    height: 2,
+  },
+  {
+    content: "Self-hosted",
+    href: "/self-hosted",
+    background: "bg-gradient-to-tl from-lime-500 to-indigo-500",
+    width: 4,
+    height: 2,
+  },
+  {
+    content: "About",
+    href: "/about",
+    background: "bg-gradient-to-tl from-purple-500 to-pink-500",
+    width: 2,
+    height: 2,
+  },
+  {
+    content: "Contact",
+    href: "/contact",
+    background: "bg-gradient-to-tl from-teal-500 to-blue-500",
+    width: 2,
+    height: 2,
+  },
+];
+---
+
+<Layout title="Menu">
+  <div>
+    <CardGrid>
+      {
+        menuItems.map(item => (
+          <Card href={item.href} bgColorClass={item.background} width={item.width} height={item.height}>
+            {item.content}
+          </Card>
+        ))
+      }
+    </CardGrid>
+  </div>
+</Layout>

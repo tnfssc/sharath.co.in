@@ -1,7 +1,5 @@
-<button class="m-2">
-  <div
-    class="w-8 h-8 grid grid-cols-3 grid-rows-3 text-slate-300 hover:text-slate-50 transition-all hover:scale-110 focus:scale-110"
-  >
+<button class="m-2" id="start-button">
+  <div class="w-6 h-6 grid grid-cols-3 grid-rows-3 text-slate-300 hover:text-slate-50 transition-all">
     <div class="bg-current m-0.5"></div>
     <div class="bg-current m-0.5"></div>
     <div class="bg-current m-0.5"></div>
@@ -13,3 +11,11 @@
     <div class="bg-current m-0.5"></div>
   </div>
 </button>
+<script>
+  document.getElementById("start-button")!.addEventListener("click", e => {
+    e.preventDefault();
+    if (window.location.href !== `${window.location.origin}/menu`)
+      window.location.href = `${window.location.origin}/menu`;
+    else window.history.back();
+  });
+</script>

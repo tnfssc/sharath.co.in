@@ -3,9 +3,10 @@ export interface CardProps {
   bgColorClass?: string;
   width?: 1 | 2 | 4 | "default";
   height?: 1 | 2 | 4 | "default";
+  href?: string;
 }
 
-let { bgColorClass, height, width } = Astro.props as CardProps;
+let { bgColorClass, height, width, href } = Astro.props as CardProps;
 if (!bgColorClass) bgColorClass = `bg-gradient-to-tr from-red-600 to-red-200`;
 if (!height) height = "default";
 if (!width) width = "default";
@@ -22,18 +23,32 @@ const rowSpan = {
   2: "row-span-2",
   4: "row-span-4",
 };
+const widthClass = {
+  default: "w-40",
+  1: "w-20",
+  2: "w-40",
+  4: "w-80",
+};
+const heightClass = {
+  default: "h-40",
+  1: "h-20",
+  2: "h-40",
+  4: "h-80",
+};
 ---
 
-<div
-  class={` ${bgColorClass} flex flex-col justify-center items-center ${colSpan[width]} ${rowSpan[height]} w-40 h-40 3d-card`}
+<a
+  class={` ${bgColorClass} flex flex-col justify-center items-center ${colSpan[width]} ${rowSpan[height]} ${widthClass[width]} ${heightClass[height]} 3d-card cursor-pointer hover:z-10`}
   style="transform-style: preserve-3d; transform: perspective(1000px)"
   data-tilt
   data-tilt-reverse="true"
   data-tilt-gyroscope="false"
   data-tilt-max={5}
   data-tilt-scale={1.02}
->
+  href={href}>
   <div style="transform: translateZ(20px)">
-    <slot />
+    <h1 class="text-3xl">
+      <slot />
+    </h1>
   </div>
-</div>
+</a>
