@@ -1,0 +1,113 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import CardGrid from "../components/CardGrid.astro";
+
+const menuItems = [
+  {
+    content: "Ghost",
+    href: "//blog.sharath.co.in",
+    background: "bg-gradient-to-tl from-green-900 to-green-400",
+    width: 4,
+    height: 4,
+  },
+  {
+    content: "SearXNG",
+    href: "//search.sharath.co.in",
+    background: "bg-gradient-to-tl from-blue-900 to-blue-400",
+    width: 4,
+    height: 4,
+  },
+  {
+    content: "CloudTube",
+    href: "//youtube.sharath.co.in",
+    background: "bg-gradient-to-tl from-red-900 to-red-400",
+    width: 4,
+    height: 2,
+  },
+  {
+    content: "LibReddit",
+    href: "//reddit.sharath.co.in",
+    background: "bg-gradient-to-tl from-teal-900 to-teal-400",
+    width: 4,
+    height: 4,
+  },
+  {
+    content: "Kutt",
+    href: "//tinyurl.sharath.co.in",
+    background: "bg-gradient-to-tl from-yellow-700 to-yellow-400",
+    width: 2,
+    height: 2,
+  },
+  {
+    content: "Jitsi Meet",
+    href: "//meet.sharath.co.in",
+    background: "bg-gradient-to-tl from-orange-900 to-orange-500",
+    width: 4,
+    height: 2,
+  },
+  {
+    content: "Bibliogram",
+    href: "//instagram.sharath.co.in",
+    background: "bg-gradient-to-tl from-purple-900 to-purple-400",
+    width: 2,
+    height: 2,
+  },
+  {
+    content: "RustDesk",
+    href: "//rustdesk.com",
+    background: "bg-gradient-to-tl from-blue-700 to-green-500",
+    width: 4,
+    height: 2,
+  },
+  {
+    content: "Penpot",
+    href: "//figma.sharath.co.in",
+    background: "bg-gradient-to-tl from-yellow-700 to-lime-600",
+    width: 4,
+    height: 2,
+  },
+  {
+    content: "OneDev",
+    href: "//onedev.sharath.co.in",
+    background: "bg-gradient-to-tl from-gray-900 to-stone-700",
+    width: 2,
+    height: 1,
+  },
+  {
+    content: "BitWarden",
+    href: "//vaultwarden.sharath.co.in",
+    background: "bg-gradient-to-tl from-blue-900 to-cyan-500",
+    width: 2,
+    height: 1,
+  },
+  {
+    content: "Portainer",
+    href: "//portainer.sharath.co.in",
+    background: "bg-gradient-to-tl from-green-900 to-green-500",
+    width: 2,
+    height: 1,
+  },
+  {
+    content: "Code",
+    href: "//code.sharath.co.in",
+    background: "bg-gradient-to-tl from-red-900 to-red-500",
+    width: 2,
+    height: 1,
+  },
+];
+---
+
+<Layout title="Self-Hosted">
+  <div>
+    <CardGrid>
+      {
+        menuItems.map(item => (
+          <Card href={item.href} bgColorClass={item.background} width={item.width} height={item.height}>
+            {item.content}
+          </Card>
+        ))
+      }
+    </CardGrid>
+  </div>
+</Layout>
