@@ -10,6 +10,7 @@ const menuItems = [
     background: "bg-gradient-to-tl from-red-500 to-yellow-500",
     width: 4,
     height: 2,
+    disableDescription: true,
   },
   {
     content: "Self-hosted",
@@ -17,6 +18,7 @@ const menuItems = [
     background: "bg-gradient-to-tl from-lime-500 to-indigo-500",
     width: 4,
     height: 2,
+    description: "My self-hosted projects",
   },
   {
     content: "About",
@@ -24,6 +26,7 @@ const menuItems = [
     background: "bg-gradient-to-tl from-purple-500 to-pink-500",
     width: 2,
     height: 2,
+    disableDescription: true,
   },
   {
     content: "Contact",
@@ -31,6 +34,7 @@ const menuItems = [
     background: "bg-gradient-to-tl from-teal-500 to-blue-500",
     width: 2,
     height: 2,
+    disableDescription: true,
   },
 ];
 ---
@@ -40,8 +44,16 @@ const menuItems = [
     <CardGrid>
       {
         menuItems.map(item => (
-          <Card href={item.href} bgColorClass={item.background} width={item.width} height={item.height}>
+          <Card
+            href={item.href}
+            bgColorClass={item.background}
+            width={item.width}
+            height={item.height}
+            disableDescription={item.disableDescription}>
             {item.content}
+            <span slot="description" class="text-center">
+              {item.description}
+            </span>
           </Card>
         ))
       }

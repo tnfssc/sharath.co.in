@@ -5,12 +5,17 @@ export interface CardProps {
   height?: 1 | 2 | 4 | "default";
   href?: string;
   openInNew?: boolean;
+  disableDescription?: boolean;
 }
 
-let { bgColorClass, height, width, href, openInNew } = Astro.props as CardProps;
+let { bgColorClass, height, width, href, openInNew, disableDescription } = Astro.props as CardProps;
 if (!bgColorClass) bgColorClass = `bg-gradient-to-tr from-red-600 to-red-200`;
 if (!height) height = "default";
 if (!width) width = "default";
+if (disableDescription === undefined) {
+  if (width === 1 || height === 1) disableDescription = true;
+  else disableDescription = false;
+}
 if (openInNew === undefined) openInNew = false;
 
 const colSpan = {
@@ -40,20 +45,62 @@ const heightClass = {
 ---
 
 <a
-  class={` ${bgColorClass} flex flex-col justify-center items-center ${colSpan[width]} ${rowSpan[height]} ${widthClass[width]} ${heightClass[height]} 3d-card cursor-pointer hover:z-10`}
+  class={`${bgColorClass} flex flex-col justify-center items-center ${colSpan[width]} ${rowSpan[height]} ${widthClass[width]} ${heightClass[height]} 3d-card cursor-pointer hover:z-10 outer-container`}
   style="transform-style: preserve-3d; transform: perspective(1000px)"
   data-tilt
   data-tilt-glare="true"
+  data-tilt-max-glare="0.2"
   data-tilt-reverse="true"
-  data-tilt-gyroscope="true"
+  data-tilt-gyroscope="false"
   data-tilt-max={5}
   data-tilt-scale={1.02}
   href={href}
   target={openInNew ? "_blank" : undefined}
   rel={openInNew ? "noreferrer noopener" : undefined}>
-  <div style="transform: translateZ(20px)">
+  <div style="transform: translateZ(48px)" class={`${disableDescription ? "block" : "title-container"}`}>
     <h1 class="text-3xl">
       <slot />
     </h1>
   </div>
+  <div
+    style="transform: translateZ(48px)"
+    class={`${disableDescription ? "hidden" : "description-container"} h-0 opacity-0`}>
+    <div class={`${widthClass[width]} ${heightClass[height]} p-5`}>
+      <h1 class="text-3xl">
+        <slot />
+      </h1>
+      <div class="w-full flex flex-col justify-center content-center" style="height: calc(100% - 3.5rem)">
+        <slot name="description" />
+      </div>
+    </div>
+  </div>
 </a>
+
+<style>
+  .outer-container:hover .title-container {
+    height: 0;
+    opacity: 0;
+  }
+  .outer-container:hover .description-container {
+    height: auto;
+    opacity: 1;
+  }
+  .title-container {
+    transition: height 0ms 400ms, opacity 400ms 0ms;
+    overflow: hidden;
+  }
+  .title-container.visible {
+    height: auto;
+    opacity: 1;
+    transition: height 0ms 0ms, opacity 600ms 0ms;
+  }
+  .description-container {
+    transition: height 0ms 400ms, opacity 400ms 0ms;
+    overflow: hidden;
+  }
+  .description-container.visible {
+    height: auto;
+    opacity: 1;
+    transition: height 0ms 0ms, opacity 600ms 0ms;
+  }
+</style>
