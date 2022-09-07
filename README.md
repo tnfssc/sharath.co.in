@@ -3,6 +3,7 @@
 [![Astro](https://img.shields.io/badge/built%20with-astro-red?style=for-the-badge&logo=astro)](https://astro.build)
 [![Typescript](https://img.shields.io/badge/uses-typescript-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind](https://img.shields.io/badge/built%20with-tailwindcss-teal?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+[![SimpleIcons](https://img.shields.io/badge/uses-simpleicons-orange?style=for-the-badge&logo=simple-icons)](https://simpleicons.org/)
 [![Vercel](https://img.shields.io/badge/deployed%20with-vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/)
 
 ## Commands

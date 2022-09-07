@@ -1,0 +1,215 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Card from "../../components/Card.astro";
+import CardGrid from "../../components/CardGrid.astro";
+
+import {
+  siNodedotjs,
+  siReact,
+  siPhp,
+  siCplusplus,
+  siMysql,
+  siMongodb,
+  siGnu,
+  siPython,
+  siAmazonaws,
+  siMicrosoftazure,
+  siGooglecloud,
+  siOracle,
+  siDocker,
+  siTypescript,
+  siKubernetes,
+} from "simple-icons/icons";
+
+const menuItems = [
+  {
+    content: "React",
+    href: "https://reactjs.org/",
+    background: "bg-gradient-to-tl from-cyan-900 to-cyan-400",
+    width: 4,
+    height: 4,
+    description: "ReactJS",
+    icon: siReact,
+    iconSizeClass: "w-6 h-6",
+    disableDescription: true,
+  },
+  {
+    content: "Node.JS",
+    href: "https://nodejs.org/en/",
+    background: "bg-gradient-to-tl from-green-900 to-green-400",
+    width: 4,
+    height: 4,
+    description: "Node.JS",
+    icon: siNodedotjs,
+    iconSizeClass: "w-6 h-6",
+    disableDescription: true,
+  },
+  {
+    content: "Python",
+    href: "https://www.python.org/",
+    background: "bg-gradient-to-tl from-yellow-900 to-yellow-400",
+    width: 2,
+    height: 2,
+    description: "Python",
+    icon: siPython,
+    iconSizeClass: "w-6 h-6",
+    disableDescription: true,
+  },
+  {
+    content: "PHP",
+    href: "https://www.php.net/",
+    background: "bg-gradient-to-tl from-violet-900 to-violet-400",
+    width: 2,
+    height: 2,
+    description: "PHP",
+    icon: siPhp,
+    iconSizeClass: "w-6 h-6",
+    disableDescription: true,
+  },
+  {
+    content: "C++",
+    href: "https://www.cplusplus.com/",
+    background: "bg-gradient-to-tl from-pink-900 to-pink-400",
+    width: 2,
+    height: 2,
+    description: "C++",
+    icon: siCplusplus,
+    iconSizeClass: "w-6 h-6",
+    disableDescription: true,
+  },
+  {
+    content: "SQL",
+    href: "https://www.mysql.com/",
+    background: "bg-gradient-to-tl from-orange-900 to-orange-400",
+    width: 2,
+    height: 2,
+    description: "MySQL",
+    icon: siMysql,
+    iconSizeClass: "w-6 h-6",
+    disableDescription: true,
+  },
+  {
+    content: "MongoDB",
+    href: "https://www.mongodb.com/",
+    background: "bg-gradient-to-tl from-lime-900 to-lime-400",
+    width: 4,
+    height: 2,
+    description: "MongoDB",
+    icon: siMongodb,
+    iconSizeClass: "w-6 h-6",
+    disableDescription: true,
+  },
+  {
+    content: "TypeScript",
+    href: "https://www.typescriptlang.org/",
+    background: "bg-gradient-to-tl from-blue-900 to-blue-400",
+    width: 4,
+    height: 4,
+    description: "TypeScript",
+    icon: siTypescript,
+    iconSizeClass: "w-6 h-6",
+    disableDescription: true,
+  },
+  {
+    content: "Linux",
+    href: "https://www.linux.org/",
+    background: "bg-gradient-to-tl from-yellow-900 to-yellow-400",
+    width: 4,
+    height: 4,
+    description: "Linux",
+    icon: siGnu,
+    iconSizeClass: "w-6 h-6",
+    disableDescription: true,
+  },
+  {
+    content: "AWS",
+    href: "https://aws.amazon.com/",
+    background: "bg-gradient-to-tl from-stone-900 to-stone-700",
+    width: 2,
+    height: 2,
+    description: "AWS",
+    icon: siAmazonaws,
+    iconSizeClass: "w-6 h-6",
+    disableDescription: true,
+  },
+  {
+    content: "Google",
+    href: "https://cloud.google.com/",
+    background: "bg-gradient-to-tl from-teal-900 to-teal-400",
+    width: 2,
+    height: 2,
+    description: "Google Cloud",
+    icon: siGooglecloud,
+    iconSizeClass: "w-6 h-6",
+    disableDescription: true,
+  },
+  {
+    content: "Azure",
+    href: "https://azure.microsoft.com/",
+    background: "bg-gradient-to-tl from-blue-900 to-blue-400",
+    width: 2,
+    height: 2,
+    description: "Azure",
+    icon: siMicrosoftazure,
+    iconSizeClass: "w-6 h-6",
+    disableDescription: true,
+  },
+  {
+    content: "Oracle",
+    href: "https://cloud.oracle.com/",
+    background: "bg-gradient-to-tl from-red-900 to-red-400",
+    width: 2,
+    height: 2,
+    description: "Oracle",
+    icon: siOracle,
+    iconSizeClass: "w-6 h-6",
+    disableDescription: true,
+  },
+  {
+    content: "Docker",
+    href: "https://www.docker.com/",
+    background: "bg-gradient-to-tl from-cyan-900 to-cyan-400",
+    width: 4,
+    height: 2,
+    description: "Docker",
+    icon: siDocker,
+    iconSizeClass: "w-6 h-6",
+    disableDescription: true,
+  },
+  {
+    content: "Kubernetes",
+    href: "https://kubernetes.io/",
+    background: "bg-gradient-to-tl from-pink-900 to-pink-400",
+    width: 4,
+    height: 2,
+    description: "Kubernetes",
+    icon: siKubernetes,
+    iconSizeClass: "w-6 h-6",
+    disableDescription: true,
+  },
+];
+---
+
+<Layout title="Self-Hosted">
+  <div>
+    <CardGrid>
+      {
+        menuItems.map(item => (
+          <Card
+            href={item.href}
+            bgColorClass={item.background}
+            width={item.width}
+            height={item.height}
+            icon={item.icon}
+            iconSizeClass={item.iconSizeClass}
+            disableDescription={item.disableDescription}>
+            {item.content}
+            <span slot="description" class="text-center">
+              {item.description}
+            </span>
+          </Card>
+        ))
+      }
+    </CardGrid>
+  </div>
+</Layout>

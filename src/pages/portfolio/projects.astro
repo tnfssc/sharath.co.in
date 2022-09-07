@@ -1,0 +1,66 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Card from "../../components/Card.astro";
+import CardGrid from "../../components/CardGrid.astro";
+
+const menuItems = [
+  {
+    content: "COVID-19 Tracker",
+    href: "//covid19tracker.in",
+    background: "bg-gradient-to-tl from-red-900 to-yellow-500",
+    width: 4,
+    height: 4,
+    description:
+      "This is a fork the (now discontinued) covid19india.org . It uses various APIs and web scraping techniques to collect the data. With traffic over 3 terabytes of data per month at it's peak, spread over millions http requests, this is my most popular project. And it only costs $20 per month to run it.",
+  },
+  {
+    content: "htOS",
+    href: "//admin.htos.sharath.co.in",
+    background: "bg-gradient-to-tl from-blue-900 to-green-500",
+    width: 4,
+    height: 2,
+    description: "A Hostel Management System for IIT Hyderabad",
+  },
+  {
+    content: "Office of Career Services",
+    href: "//ocs.iith.ac.in",
+    background: "bg-gradient-to-tl from-red-500 to-blue-500",
+    width: 4,
+    height: 2,
+    description: "One-stop-shop for all the career services of IIT Hyderabad",
+  },
+  {
+    content: "CEMS",
+    href: "//cems.iith.ac.in",
+    background: "bg-gradient-to-tl from-stone-900 to-stone-400",
+    width: 4,
+    height: 2,
+    description: "A system of devices that monitors the energy consumption",
+  },
+  {
+    content: "Directions",
+    href: "//x.tnfssc.vercel.app/",
+    background: "bg-gradient-to-tl from-blue-900 to-yellow-500",
+    width: 4,
+    height: 2,
+    description: "Google Maps clone but worse in every possible way",
+  },
+];
+---
+
+<Layout title="Self-Hosted">
+  <div>
+    <CardGrid>
+      {
+        menuItems.map(item => (
+          <Card href={item.href} bgColorClass={item.background} width={item.width} height={item.height}>
+            {item.content}
+            <span slot="description" class="text-center">
+              {item.description}
+            </span>
+          </Card>
+        ))
+      }
+    </CardGrid>
+  </div>
+</Layout>

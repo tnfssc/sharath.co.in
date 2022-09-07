@@ -9,9 +9,11 @@ export interface CardProps {
   openInNew?: boolean;
   disableDescription?: boolean;
   icon?: SimpleIcon;
+  iconSizeClass?: string;
 }
 
-let { bgColorClass, height, width, href, openInNew, disableDescription, icon } = Astro.props as CardProps;
+let { bgColorClass, height, width, href, openInNew, disableDescription, icon, iconSizeClass } =
+  Astro.props as CardProps;
 if (!bgColorClass) bgColorClass = `bg-gradient-to-tr from-red-600 to-red-200`;
 if (!height) height = "default";
 if (!width) width = "default";
@@ -66,7 +68,7 @@ const heightClass = {
       {
         icon && (
           <div
-            class="h-6 w-6 text-white mt-1 ml-1.5"
+            class={`h-6 w-6 ${iconSizeClass} text-white mt-1 ml-1.5`}
             set:html={icon.svg.replace('xmlns="http://www.w3.org/2000/svg"', 'fill="white"')}
           />
         )
@@ -82,7 +84,7 @@ const heightClass = {
         {
           icon && (
             <div
-              class="h-6 w-6 text-white mt-1 ml-1.5"
+              class={`h-6 w-6 ${iconSizeClass} text-white mt-1 ml-1.5`}
               set:html={icon.svg.replace('xmlns="http://www.w3.org/2000/svg"', 'fill="white"')}
             />
           )
