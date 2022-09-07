@@ -13,5 +13,8 @@
     "@astrojs/mdx": "^0.10.1",
     "@astrojs/tailwind": "^1.0.0",
     "astro": "^1.0.7"
+  },
+  "dependencies": {
+    "simple-icons": "^7.10.0"
   }
 }

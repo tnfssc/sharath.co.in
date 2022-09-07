@@ -3,6 +3,8 @@ import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import CardGrid from "../components/CardGrid.astro";
 
+import { siHomeassistant, siGoogleearth, si1password, siMicrosoftoutlook } from "simple-icons/icons";
+
 const menuItems = [
   {
     content: "Home",
@@ -11,6 +13,7 @@ const menuItems = [
     width: 4,
     height: 2,
     disableDescription: true,
+    icon: siHomeassistant,
   },
   {
     content: "Self-hosted",
@@ -19,6 +22,7 @@ const menuItems = [
     width: 4,
     height: 2,
     description: "My self-hosted projects",
+    icon: siGoogleearth,
   },
   {
     content: "About",
@@ -27,6 +31,7 @@ const menuItems = [
     width: 2,
     height: 2,
     disableDescription: true,
+    icon: si1password,
   },
   {
     content: "Contact",
@@ -35,6 +40,7 @@ const menuItems = [
     width: 2,
     height: 2,
     disableDescription: true,
+    icon: siMicrosoftoutlook,
   },
 ];
 ---
@@ -49,7 +55,8 @@ const menuItems = [
             bgColorClass={item.background}
             width={item.width}
             height={item.height}
-            disableDescription={item.disableDescription}>
+            disableDescription={item.disableDescription}
+            icon={item.icon}>
             {item.content}
             <span slot="description" class="text-center">
               {item.description}
