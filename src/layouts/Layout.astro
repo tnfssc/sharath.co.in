@@ -18,24 +18,21 @@ const { title, frontmatter } = Astro.props as Props;
     <meta name="generator" content={Astro.generator} />
     <title>{title || frontmatter.title} | sharath.co.in</title>
   </head>
-  <body class="bg-gradient-to-br from-gray-900 to-stone-800 h-screen w-screen overflow-auto flex flex-col text-white">
+  <body class="h-screen w-screen">
     <div
-      class="absolute z-50 w-screen h-screen overflow-auto flex justify-center content-center flex-col"
-      style="display: none"
-      id="rootmodal">
+      class="bg-gradient-to-br from-gray-900 to-stone-800 overflow-auto flex flex-col text-white min-h-full min-w-full">
+      <header>
+        <StartButton />
+      </header>
+      <main class="flex-1 flex flex-col justify-center items-center mt-4 flex-grow">
+        <slot />
+      </main>
+      <footer class="flex justify-center content-center pb-3 pt-6">
+        <a href="https://sharath.co.in" class="hover:underline">
+          Sharath ♥️ {new Date().getFullYear()}
+        </a>
+      </footer>
     </div>
-    <header>
-      <StartButton />
-    </header>
-    <main class="flex-1 flex flex-col justify-center items-center mt-4">
-      <slot />
-    </main>
-    <footer class="flex justify-center align-middle py-1">
-      <a href="https://sharath.co.in" class="hover:underline">
-        Sharath ♥️ {new Date().getFullYear()}
-      </a>
-    </footer>
-
     <style>
       @font-face {
         font-family: "Red Hat Display";
