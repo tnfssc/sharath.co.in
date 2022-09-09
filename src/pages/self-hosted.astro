@@ -17,6 +17,8 @@ import {
   siBitwarden,
   siPortainer,
   siVisualstudiocode,
+  siDiagramsdotnet,
+  siZapier,
 } from "simple-icons/icons";
 
 const menuItems = [
@@ -29,6 +31,15 @@ const menuItems = [
     description:
       "My private blog. I post here very rarely. You can checkout if there are any posts there. It is powered by Ghost.org",
     icon: siBlogger,
+  },
+  {
+    content: "Draw",
+    href: "//draw.sharath.co.in",
+    background: "bg-gradient-to-tl from-orange-900 to-indigo-400",
+    width: 4,
+    height: 2,
+    description: "Self-hosted Draw.io instance",
+    icon: siDiagramsdotnet,
   },
   {
     content: "SearXNG",
@@ -47,16 +58,6 @@ const menuItems = [
     height: 2,
     description: "Alternative YouTube frontend for YouTube addicts.",
     icon: siYoutube,
-  },
-  {
-    content: "LibReddit",
-    href: "//reddit.sharath.co.in",
-    background: "bg-gradient-to-tl from-teal-900 to-teal-400",
-    width: 4,
-    height: 4,
-    description:
-      "Alternate frontend for reddit.com. I use a ton of reddit, so a little bit of privacy while browsing it helps a lot",
-    icon: siReddit,
   },
   {
     content: "Kutt",
@@ -79,7 +80,7 @@ const menuItems = [
   {
     content: "Jitsi",
     href: "//meet.sharath.co.in",
-    background: "bg-gradient-to-tl from-orange-900 to-orange-500",
+    background: "bg-gradient-to-tl from-purple-900 to-blue-500",
     width: 2,
     height: 2,
     description: "Alternative to Google Meet",
@@ -88,10 +89,20 @@ const menuItems = [
   {
     content: "RxResume",
     href: "//resume.sharath.co.in",
-    background: "bg-gradient-to-tl from-pink-900 to-pink-400",
+    background: "bg-gradient-to-tl from-orange-900 to-orange-400",
     width: 2,
     height: 2,
     description: "Resume builder",
+  },
+  {
+    content: "LibReddit",
+    href: "//reddit.sharath.co.in",
+    background: "bg-gradient-to-tl from-red-900 to-red-600",
+    width: 4,
+    height: 2,
+    description:
+      "Alternate frontend for reddit.com. I use a ton of reddit, so a little bit of privacy while browsing it helps a lot",
+    icon: siReddit,
   },
   {
     content: "RustDesk",
@@ -112,40 +123,49 @@ const menuItems = [
     icon: siInstagram,
   },
   {
-    content: "OneDev",
-    href: "//onedev.sharath.co.in",
-    background: "bg-gradient-to-tl from-gray-900 to-stone-700",
-    width: 2,
-    height: 1,
-    description: "Open source GitLab",
-    icon: siGithub,
-  },
-  {
     content: "BitWarden",
     href: "//vaultwarden.sharath.co.in",
-    background: "bg-gradient-to-tl from-red-900 to-red-500",
-    width: 2,
+    background: "bg-gradient-to-tl from-blue-900 to-blue-800",
+    width: 4,
     height: 1,
     description: "Open source password manager",
     icon: siBitwarden,
   },
   {
-    content: "Portainer",
+    content: "",
+    href: "//onedev.sharath.co.in",
+    background: "bg-gradient-to-tl from-gray-900 to-stone-700",
+    width: 1,
+    height: 1,
+    description: "Open source GitLab",
+    icon: siGithub,
+  },
+  {
+    content: "",
     href: "//portainer.sharath.co.in",
     background: "bg-gradient-to-tl from-green-900 to-green-500",
-    width: 2,
+    width: 1,
     height: 1,
     description: "Open source Docker management",
     icon: siPortainer,
   },
   {
-    content: "Code",
+    content: "",
     href: "//code.sharath.co.in",
-    background: "bg-gradient-to-tl from-blue-900 to-cyan-500",
-    width: 2,
+    background: "bg-gradient-to-tl from-cyan-700 to-cyan-500",
+    width: 1,
     height: 1,
-    description: "Open source VSCode",
+    description: "",
     icon: siVisualstudiocode,
+  },
+  {
+    content: "",
+    href: "//n8n.sharath.co.in",
+    background: "bg-gradient-to-tl from-yellow-900 to-red-500",
+    width: 1,
+    height: 1,
+    description: "",
+    icon: siZapier,
   },
 ];
 ---
