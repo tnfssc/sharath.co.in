@@ -10,9 +10,11 @@ export interface CardProps {
   disableDescription?: boolean;
   icon?: SimpleIcon;
   iconSizeClass?: string;
+  className?: string;
+  style?: string;
 }
 
-let { bgColorClass, height, width, href, openInNew, disableDescription, icon, iconSizeClass } =
+let { bgColorClass, height, width, href, openInNew, disableDescription, icon, iconSizeClass, className, style } =
   Astro.props as CardProps;
 if (!bgColorClass) bgColorClass = `bg-gradient-to-tr from-red-600 to-red-200`;
 if (!height) height = "default";
@@ -50,9 +52,9 @@ const heightClass = {
 ---
 
 <a
-  class={`${bgColorClass} flex flex-col justify-center items-center ${colSpan[width]} ${rowSpan[height]} ${widthClass[width]} ${heightClass[height]} 3d-card cursor-pointer hover:z-10 outer-container`}
-  style="transform-style: preserve-3d; transform: perspective(1000px)"
-  data-tilt
+  class={`${bgColorClass} flex flex-col justify-center items-center ${colSpan[width]} ${rowSpan[height]} ${widthClass[width]} ${heightClass[height]} 3d-card cursor-pointer hover:z-10 outer-container ${className}`}
+  style={`transform-style: preserve-3d; transform: perspective(1000px); ${style}`}
+  data-tilt-later
   data-tilt-glare="true"
   data-tilt-max-glare="0.2"
   data-tilt-reverse="true"
@@ -123,5 +125,15 @@ const heightClass = {
     height: auto;
     opacity: 1;
     transition: height 0ms 0ms, opacity 600ms 0ms;
+  }
+  @keyframes opening {
+    0% {
+      transform: translateX(320px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0px);
+      opacity: 1;
+    }
   }
 </style>

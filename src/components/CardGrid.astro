@@ -1,5 +1,25 @@
-<div
-  class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12"
->
+<div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 card-grid invisible">
   <slot />
 </div>
+
+<script>
+  setTimeout(() => {
+    const el = document.querySelector(".card-grid");
+    el?.classList.replace("invisible", "visible");
+    setTimeout(() => {
+      const els = document.querySelectorAll("[data-tilt-later]");
+      els.forEach(el => {
+        el.removeAttribute("style");
+        el.setAttribute("style", "transform-style: preserve-3d; transform: perspective(1000px);");
+      });
+      VanillaTilt.init(els, {
+        max: 5,
+        glare: true,
+        "max-glare": 0.2,
+        gyroscope: false,
+        scale: 1.02,
+        reverse: true,
+      });
+    }, 1000);
+  }, 200);
+</script>
