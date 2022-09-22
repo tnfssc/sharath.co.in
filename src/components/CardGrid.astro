@@ -4,8 +4,10 @@
 
 <script>
   setTimeout(() => {
-    const el = document.querySelector(".card-grid");
-    el?.classList.replace("invisible", "visible");
+    const el = document.querySelectorAll(".card-grid");
+    el.forEach(e => {
+      e.classList.replace("invisible", "visible");
+    });
     setTimeout(() => {
       const els = document.querySelectorAll("[data-tilt-later]");
       els.forEach(el => {

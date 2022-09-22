@@ -1,5 +1,6 @@
 ---
 import StartButton from "../components/StartButton.astro";
+import { siGithub, siLinkedin, siYoutube, siMaildotru } from "simple-icons/icons";
 
 export interface Props {
   title: string;
@@ -7,6 +8,29 @@ export interface Props {
 }
 
 const { title, frontmatter } = Astro.props as Props;
+
+const footerIcons = [
+  {
+    name: "Github",
+    icon: siGithub,
+    link: "https://github.com/tnfssc",
+  },
+  {
+    name: "LinkedIn",
+    icon: siLinkedin,
+    link: "https://www.linkedin.com/in/tnfssc/",
+  },
+  {
+    name: "YouTube",
+    icon: siYoutube,
+    link: "https://www.youtube.com/channel/UCuB3HpVwVpNyaVxjr8k5Geg",
+  },
+  {
+    name: "Email",
+    icon: siMaildotru,
+    link: "mailto:query@sharath.co.in",
+  },
+];
 ---
 
 <!DOCTYPE html>
@@ -28,8 +52,24 @@ const { title, frontmatter } = Astro.props as Props;
         <slot />
       </main>
       <footer class="flex justify-center content-center pb-3 pt-6">
-        <a href="https://sharath.co.in" class="hover:underline">
-          Sharath ♥️ {new Date().getFullYear()}
+        {
+          footerIcons.map(icon => (
+            <a
+              href={icon.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="m-1 hover:scale-125 transition-transform">
+              <div
+                class={`h-4 w-4 text-white mt-1 ml-1.5`}
+                set:html={icon.icon.svg
+                  .replace('xmlns="http://www.w3.org/2000/svg"', 'fill="white"')
+                  .replace(/<title>.*<\/title>/, `<title>${icon.name}</title>`)}
+              />
+            </a>
+          ))
+        }
+        <a href="https://sharath.co.in" class="hover:underline transition-transform m-1 ml-2">
+          Sharath 🤍 {new Date().getFullYear()}
         </a>
       </footer>
     </div>

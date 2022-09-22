@@ -71,7 +71,9 @@ const heightClass = {
         icon && (
           <div
             class={`h-6 w-6 ${iconSizeClass} text-white mt-1 ml-1.5`}
-            set:html={icon.svg.replace('xmlns="http://www.w3.org/2000/svg"', 'fill="white"')}
+            set:html={icon.svg
+              .replace('xmlns="http://www.w3.org/2000/svg"', 'fill="white"')
+              .replace(/<title>.*<\/title>/, `<title></title>`)}
           />
         )
       }
@@ -87,7 +89,9 @@ const heightClass = {
           icon && (
             <div
               class={`h-6 w-6 ${iconSizeClass} text-white mt-1 ml-1.5`}
-              set:html={icon.svg.replace('xmlns="http://www.w3.org/2000/svg"', 'fill="white"')}
+              set:html={icon.svg
+                .replace('xmlns="http://www.w3.org/2000/svg"', 'fill="white"')
+                .replace(/<title>.*<\/title>/, `<title></title>`)}
             />
           )
         }
