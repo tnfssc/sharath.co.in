@@ -1,4 +1,4 @@
-# [sharath.co.in](https://new.sharath.co.in/)
+# [sharath.co.in](https://sharath.co.in/)
 
 [![Astro](https://img.shields.io/badge/built%20with-astro-red?style=for-the-badge&logo=astro)](https://astro.build)
 [![Typescript](https://img.shields.io/badge/uses-typescript-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
