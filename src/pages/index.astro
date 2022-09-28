@@ -3,7 +3,14 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Home">
-  <span id="home-content" class="flex flex-col justify-center items-center"><h1 class="text-6xl">Hi</h1></span>
+  <span id="home-content" class="flex flex-col justify-center items-center">
+    <h1 class="text-6xl">Hi</h1>
+    <div class="h-5 overflow-hidden mt-5">
+      <p class="text-sm whitespace-nowrap transition-transform translate-y-5 duration-1000 ease-in-out" id="helperText">
+        Click on the button on the top left corner.
+      </p>
+    </div>
+  </span>
 </Layout>
 <script>
   if (`${window.location.href}` !== `${window.location.origin}/`) {
@@ -13,4 +20,35 @@ import Layout from "../layouts/Layout.astro";
       <a class="hover:underline" href="/menu">visit the menu?</a>
     `;
   }
+  const helperText = document.getElementById("helperText")!;
+  const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
+  const factTexts = [
+    "Since you're still here, here's a fact for you",
+    "Since you're still here, here's a fun fact",
+    "Since you're still here, I'll tell you a fact",
+  ];
+
+  await sleep(5000);
+  helperText.classList.remove("translate-y-5");
+  await sleep(10000);
+  helperText.classList.add("translate-y-5");
+  await sleep(1000);
+  helperText.innerText = factTexts[Math.floor(Math.random() * factTexts.length)];
+  helperText.classList.remove("translate-y-5");
+  await sleep(10000);
+  helperText.classList.add("translate-y-5");
+  const res = await fetch("https://uselessfacts.jsph.pl/random.json?language=en")
+    .then(res => res.json())
+    .catch(err => console.error(err));
+  await sleep(1000);
+  if (!res?.text) helperText.innerText = "You're awesome.";
+  else {
+    helperText.innerHTML = `<a target="_blank" rel="noreferrer noopener" href=${res.permalink}>${res.text}</a>`;
+    helperText.classList.add("hover:underline");
+  }
+  if (helperText.clientWidth + 48 > document.body.clientWidth) {
+    helperText.innerText = "You're awesome.";
+  }
+  helperText.classList.remove("translate-y-5");
 </script>
