@@ -1,6 +1,6 @@
 ---
 import type { SimpleIcon } from "simple-icons";
-
+import { clsx } from "clsx";
 export interface CardProps {
   bgColorClass?: string;
   width?: 1 | 2 | 4 | "default";
@@ -12,10 +12,22 @@ export interface CardProps {
   iconSizeClass?: string;
   className?: string;
   style?: string;
+  bgImgSrc?: string;
 }
 
-let { bgColorClass, height, width, href, openInNew, disableDescription, icon, iconSizeClass, className, style } =
-  Astro.props as CardProps;
+let {
+  bgColorClass,
+  height,
+  width,
+  href,
+  openInNew,
+  disableDescription,
+  icon,
+  iconSizeClass,
+  className,
+  style,
+  bgImgSrc,
+} = Astro.props as CardProps;
 if (!bgColorClass) bgColorClass = `bg-gradient-to-tr from-red-600 to-red-200`;
 if (!height) height = "default";
 if (!width) width = "default";
@@ -64,26 +76,11 @@ const heightClass = {
   href={href}
   target={openInNew ? "_blank" : undefined}
   rel={openInNew ? "noreferrer noopener" : undefined}>
-  <div style="transform: translateZ(48px)" class={`${disableDescription ? "block" : "title-container"}`}>
-    <h1 class="text-2xl flex">
-      <slot />
-      {
-        icon && (
-          <div
-            class={`h-6 w-6 ${iconSizeClass} text-white mt-1 ml-1.5`}
-            set:html={icon.svg
-              .replace('xmlns="http://www.w3.org/2000/svg"', 'fill="white"')
-              .replace(/<title>.*<\/title>/, `<title></title>`)}
-          />
-        )
-      }
-    </h1>
-  </div>
   <div
-    style="transform: translateZ(48px)"
-    class={`${disableDescription ? "hidden" : "description-container"} h-0 opacity-0`}>
-    <div class={`${widthClass[width]} ${heightClass[height]} p-5`}>
-      <h1 class="text-2xl flex">
+    class="w-full h-full flex flex-col justify-center items-center bg-cover bg-center"
+    style={`background-image: url(${bgImgSrc});`}>
+    <div style="transform: translateZ(48px)" class={`${disableDescription ? "block" : "title-container"}`}>
+      <h1 class={clsx("text-2xl flex", { "p-3 bg-black rounded-lg": bgImgSrc })}>
         <slot />
         {
           icon && (
@@ -96,8 +93,31 @@ const heightClass = {
           )
         }
       </h1>
-      <div class="w-full flex flex-col justify-center content-center" style="height: calc(100% - 3.5rem)">
-        <slot name="description" />
+    </div>
+    <div
+      style="transform: translateZ(48px)"
+      class={`${disableDescription ? "hidden" : "description-container"} h-0 opacity-0`}>
+      <div class={`${widthClass[width]} ${heightClass[height]} p-5`}>
+        <h1 class={clsx("text-2xl flex", { "p-3 bg-black rounded-lg": bgImgSrc })}>
+          <slot />
+          {
+            icon && (
+              <div
+                class={`h-6 w-6 ${iconSizeClass} text-white mt-1 ml-1.5`}
+                set:html={icon.svg
+                  .replace('xmlns="http://www.w3.org/2000/svg"', 'fill="white"')
+                  .replace(/<title>.*<\/title>/, `<title></title>`)}
+              />
+            )
+          }
+        </h1>
+        <div
+          class={clsx("w-full flex flex-col justify-center content-center", {
+            "p-3 mt-1 bg-black rounded-lg": bgImgSrc,
+          })}
+          style="height: calc(100% - 3.5rem)">
+          <slot name="description" />
+        </div>
       </div>
     </div>
   </div>

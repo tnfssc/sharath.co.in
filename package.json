@@ -12,7 +12,9 @@
   "devDependencies": {
     "@astrojs/mdx": "^0.10.1",
     "@astrojs/tailwind": "^1.0.0",
-    "astro": "^1.0.7"
+    "astro": "^1.0.7",
+    "clsx": "^1.2.1",
+    "octokit": "^2.0.11"
   },
   "dependencies": {
     "simple-icons": "^7.10.0"

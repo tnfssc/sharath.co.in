@@ -1,0 +1,84 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Octokit } from "octokit";
+import CardGrid from "../components/CardGrid.astro";
+import Card from "../components/Card.astro";
+
+const octokit = new Octokit({ auth: "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" });
+
+const starredRepos = await octokit.rest.activity.listReposStarredByUser({
+  username: "tnfssc",
+});
+
+const repoLogos: (string | null)[] = [];
+
+for (const _repoCode in starredRepos.data) {
+  // @ts-ignore
+  const _repo = starredRepos.data[_repoCode];
+  const repo: (typeof starredRepos.data)[0] = _repo!;
+  if (!repo || !repo.owner?.login) {
+    repoLogos.push(null);
+    continue;
+  }
+  repoLogos.push(`https://github.com/${repo.owner.login}.png`);
+}
+
+const distinctColors = [
+  "bg-red-600",
+  "bg-yellow-600",
+  "bg-green-600",
+  "bg-blue-600",
+  "bg-indigo-600",
+  "bg-purple-600",
+  "bg-pink-600",
+];
+---
+
+<Layout title="Interesting Projects">
+  <span id="home-content" class="flex flex-col justify-center items-center">
+    <CardGrid>
+      {
+        starredRepos.data
+          .sort((a, b) => (new Date(a!.starred_at) < new Date(b!.starred_at) ? -1 : 1))
+          .map((_repo, i) => {
+            // @ts-ignore
+            const repo: (typeof starredRepos.data)[0] = _repo!;
+            if (!repo) return null;
+            return (
+              <Card
+                style={`
+                  animation-delay: ${i + 1}0ms;
+                  animation-name: opening;
+                  animation-iteration-count: 1;
+                  animation-fill-mode: forwards;
+                  animation-duration: 0.7s;
+                  animation-timing-function: ease-in-out;
+                `}
+                bgImgSrc={repoLogos[i]}
+                href={repo.html_url}
+                iconImgSrc={repoLogos[i]}
+                bgColorClass={distinctColors[i % distinctColors.length]}
+                width={4}
+                openInNew="true"
+                height={4}>
+                {repo.name}
+                <span slot="description" class="text-center">
+                  {repo.description?.split(" ").slice(0, 22).join(" ")}
+                  {(repo.description?.split(" ").length ?? 0) > 22 && "..."}
+                </span>
+              </Card>
+            );
+          })
+      }
+    </CardGrid>
+    <div class="text-center mt-6">
+      <a
+        class="hover:underline transition-transform"
+        href="https://github.com/tnfssc/sharath.co.in/commits/main"
+        target="_blank"
+        rel="noopener noreferrer">
+        Last updated: {new Date().toLocaleDateString(undefined, { dateStyle: "long" })}
+      </a>
+    </div>
+  </span>
+</Layout>

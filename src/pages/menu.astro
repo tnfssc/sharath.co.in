@@ -3,7 +3,14 @@ import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import CardGrid from "../components/CardGrid.astro";
 
-import { siHomeassistant, siGoogleearth, si1password, siMicrosoftoutlook } from "simple-icons/icons";
+import {
+  siHomeassistant,
+  siGoogleearth,
+  si1password,
+  siMicrosoftoutlook,
+  siStarship,
+  siOnlyfans,
+} from "simple-icons/icons";
 
 const menuItems = [
   {
@@ -14,6 +21,15 @@ const menuItems = [
     height: 2,
     disableDescription: true,
     icon: siHomeassistant,
+  },
+  {
+    content: "Interesting Projects",
+    href: "/interesting-projects",
+    background: "bg-gradient-to-tl from-orange-500 to-blue-500",
+    width: 4,
+    height: 2,
+    disableDescription: true,
+    icon: siStarship,
   },
   {
     content: "Self-hosted",
@@ -28,7 +44,7 @@ const menuItems = [
     content: "About",
     href: "/about",
     background: "bg-gradient-to-tl from-purple-500 to-pink-500",
-    width: 2,
+    width: 4,
     height: 2,
     disableDescription: true,
     icon: si1password,
@@ -37,10 +53,19 @@ const menuItems = [
     content: "Contact",
     href: "/contact",
     background: "bg-gradient-to-tl from-teal-500 to-blue-500",
-    width: 2,
+    width: 4,
     height: 2,
     disableDescription: true,
     icon: siMicrosoftoutlook,
+  },
+  {
+    content: "Old Site",
+    href: "https://old.sharath.co.in",
+    background: "bg-gradient-to-tl from-blue-500 to-yellow-500",
+    width: 4,
+    height: 2,
+    disableDescription: true,
+    icon: siOnlyfans,
   },
 ];
 ---
