@@ -4,7 +4,8 @@ import { Octokit } from "octokit";
 import CardGrid from "../components/CardGrid.astro";
 import Card from "../components/Card.astro";
 
-const octokit = new Octokit({ auth: "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" });
+const octokit = new Octokit({ auth: import.meta.env.GITHUB_API_TOKEN });
+await octokit.rest.users.getAuthenticated();
 
 const starredRepos = await octokit.rest.activity.listReposStarredByUser({
   username: "tnfssc",
