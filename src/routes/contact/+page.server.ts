@@ -10,6 +10,7 @@ const schema = z.object({
 
 export type Response = {
   message: string;
+
   errors?: z.ZodError<z.infer<typeof schema>>["formErrors"];
 };
 
@@ -18,6 +19,7 @@ export const actions = {
     try {
       const data = await request.formData();
       const { email, message } = await schema.parseAsync({ email: data.get("email"), message: data.get("message") });
+      if (!env.CONTACT_DISCORD_WEBHOOK) return fail(500, { message: "Something went wrong" });
       const res = await fetch(env.CONTACT_DISCORD_WEBHOOK, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

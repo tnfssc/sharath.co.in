@@ -3,7 +3,7 @@
   import Icon from "$lib/components/Icon.svelte";
 
   import type { IconifyIcon } from "@iconify/svelte";
-  import { fade, fly } from "svelte/transition";
+  import { fade } from "svelte/transition";
 
   export let isOpen = false;
   export let toggleSidebar: () => void;
@@ -11,14 +11,14 @@
   export let items: Array<{ href: string; icon: IconifyIcon; text: { content: string; strokeLength: number } }>;
 </script>
 
-<ul class="menu w-full bg-base-100 p-4 text-base-content sm:w-96" on:click={toggleSidebar} on:keydown={() => {}}>
+<ul class="menu w-full bg-base-100 p-4 text-base-content sm:w-96" on:click={toggleSidebar} on:keydown={() => ""}>
   {#if isOpen}
     {#each items as item, i}
       <li>
         <a href={item.href}>
-          <span in:fade={{ delay: i * 300, duration: 300 }} class="text-white"><Icon icon={item.icon} size={12} /></span>
+          <span in:fade={{ delay: 300, duration: 300 }} class="text-white"><Icon icon={item.icon} size={12} /></span>
           <Item
-            delay={i * 300}
+            delay={100}
             strokeLength={item.text.strokeLength}
             strokeWidth={2}
             height={76}
