@@ -2,6 +2,6 @@ export const rotate180 = (_: HTMLElement, { direction = "cw" }: { direction: "cw
   const rotate = direction === "cw" ? 180 : -180;
   return {
     duration: 300,
-    css: (t: number) => `transform: rotate(${t * rotate}deg); opacity: ${t}`,
+    css: (t: number) => `transform: rotate(${t * rotate}deg); opacity: ${t}; transform-ease: ease-in-out;`,
   };
 };
